@@ -43,9 +43,11 @@ class LinkedList:
                 else:
                     current_node = next_node
 
-    
+    def remove_nodes(self, values_as_list):
+        for value in values_as_list:
+            self.remove_node(value)
     def printList(self, show_nodes=False):
-        output = "(H) "
+        output = "(HEAD) "
         current_node = self.head_node
         while(current_node):
             if(current_node.get_value() != None):
@@ -53,15 +55,26 @@ class LinkedList:
                 if(current_node.get_next_node() != None and show_nodes):
                     output += " -> "
             current_node = current_node.get_next_node()
+        output += " (TAIL)"
         return output
 
+
+print("Inserting Node...")
 
 list = LinkedList(5)
 list.insert_beginning(20)
 list.insert_beginning(100)
+list.insert_beginning(500)
 list.insert_beginning(2000)
+list.insert_beginning(3000)
+list.insert_beginning(800)
+list.insert_beginning(4000)
+list.insert_beginning(5000)
 print(list.printList(True))
 
+print("Removing Node...")
 list.remove_node(100)
-print("Removing Node")
+list.remove_node(2000)
+print("Removing Nodes...")
+list.remove_nodes([800, 500, 3000])
 print(list.printList(True))
