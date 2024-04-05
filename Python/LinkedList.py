@@ -46,6 +46,7 @@ class LinkedList:
     def remove_nodes(self, values_as_list):
         for value in values_as_list:
             self.remove_node(value)
+            
     def printList(self, show_nodes=False):
         output = "(HEAD) "
         current_node = self.head_node
