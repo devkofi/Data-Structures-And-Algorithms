@@ -13,6 +13,8 @@ class Node:
     def set_next_node(self, next_node):
         self.next_node = next_node
 
+    def __repr__(self):
+        return "{}".format(self.value)
 
 class LinkedList:
 
@@ -47,6 +49,54 @@ class LinkedList:
         for value in values_as_list:
             self.remove_node(value)
             
+    def swap_node(self, val1, val2):
+        current_node = self.head_node
+        
+        temp_nodes = {
+            "node1": None,
+            "node2": None
+        }
+
+        temp_prev_nodes = {
+            
+        }
+
+        if(current_node.get_value == val1):
+            temp_nodes.update({"node1": current_node})
+        
+        if(current_node.get_value == val2):
+            temp_nodes.update({"node2": current_node})
+
+        while(current_node):
+            next_node = current_node.get_next_node()
+            if(next_node.get_value() == val1):
+                temp_nodes.update({"node1": next_node})
+                current_node = None
+            else:
+                current_node = next_node
+        
+        current_node = self.head_node
+        
+        while(current_node):
+            next_node = current_node.get_next_node()
+            if(next_node.get_value() == val2):
+                temp_nodes.update({"node2": next_node})
+                current_node = None
+            else:
+                current_node = next_node
+        
+        #get previous nodes
+        current_node = self.head_node
+        temp_prev_nodes["node_head_prev"] = None
+        while(current_node):
+            if(current_node.get_next_node() != None):
+                temp_prev_nodes["node_{}_prev".format(current_node.get_next_node())] = current_node
+            next_node = current_node.get_next_node()
+            current_node = next_node
+
+        print("Temp Node 1: {} \nTemp Node 2: {}".format(temp_nodes['node1'],temp_nodes['node2']))
+        print(temp_prev_nodes)
+
     def printList(self, show_nodes=False):
         output = "(HEAD) "
         current_node = self.head_node
@@ -79,3 +129,6 @@ list.remove_node(2000)
 print("Removing Nodes...")
 list.remove_nodes([800, 500, 3000])
 print(list.printList(True))
+print("Swapping Nodes...")
+list.swap_node(20, 4000)
+
