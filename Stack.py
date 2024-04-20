@@ -11,3 +11,10 @@ class Node:
   
   def get_value(self):
     return self.value
+
+
+class Stack:
+  def __init__(self, limit=1000):
+    self.top_item = None
+    self.size = 0
+    self.limit = limit
