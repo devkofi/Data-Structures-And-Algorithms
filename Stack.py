@@ -34,3 +34,12 @@ class Stack:
       print("Adding {} to the pizza stack!".format(value))
     else:
       print("No room for {}!".format(value))
+
+  def pop(self):
+    if not self.is_empty():
+      item_to_remove = self.top_item
+      self.top_item = item_to_remove.get_next_node()
+      self.size -= 1
+      print("Delivering " + item_to_remove.get_value())
+      return item_to_remove.get_value()
+    print("All out of pizza.")
