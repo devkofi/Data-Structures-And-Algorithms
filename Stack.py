@@ -18,3 +18,10 @@ class Stack:
     self.top_item = None
     self.size = 0
     self.limit = limit
+
+  def has_space(self):
+    return self.limit > self.size
+
+  def is_empty(self):
+    return self.size == 0
+ 
