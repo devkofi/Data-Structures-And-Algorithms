@@ -43,3 +43,30 @@ class HashMap:
       number_collisions += 1
 
     return
+
+  def retrieve(self, key):
+    array_index = self.compressor(self.hash(key))
+    possible_return_value = self.array[array_index]
+
+    if possible_return_value is None:
+      return None
+
+    if possible_return_value[0] == key:
+      return possible_return_value[1]
+
+    retrieval_collisions = 1
+
+    while (possible_return_value != key):
+      new_hash_code = self.hash(key, retrieval_collisions)
+      retrieving_array_index = self.compressor(new_hash_code)
+      possible_return_value = self.array[retrieving_array_index]
+
+      if possible_return_value is None:
+        return None
+
+      if possible_return_value[0] == key:
+        return possible_return_value[1]
+
+      retrieval_collisions += 1
+
+    return
