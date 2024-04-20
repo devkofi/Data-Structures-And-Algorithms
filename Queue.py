@@ -53,3 +53,17 @@ class Queue:
     else:
       print("Sorry, no more room!")
    
+  def dequeue(self):
+    if self.get_size() > 0:
+      item_to_remove = self.head
+      print(str(item_to_remove.get_value()) + " is served!")
+      if self.get_size() == 1:
+        self.head = None
+        self.tail = None
+      else:
+        self.head = self.head.get_next_node()
+      self.size -= 1
+      return item_to_remove.get_value()
+    else:
+      print("The queue is totally empty!")
+     
