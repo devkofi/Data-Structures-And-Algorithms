@@ -43,3 +43,8 @@ class Stack:
       print("Delivering " + item_to_remove.get_value())
       return item_to_remove.get_value()
     print("All out of pizza.")
+
+  def peek(self):
+    if not self.is_empty():
+      return self.top_item.get_value()
+    print("Nothing to see here!")
